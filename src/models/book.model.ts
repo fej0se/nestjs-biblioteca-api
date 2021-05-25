@@ -6,17 +6,17 @@ export class Book extends Model<Book> {
     type: DataType.STRING(10),
     allowNull: false,
   })
-  private codigo: string;
+  codigo: string;
 
   @Column({
     type: DataType.STRING(255),
     allowNull: false,
   })
-  private nome: string;
+  nome: string;
 
   @Column({
     type: DataType.DECIMAL(10, 2),
     allowNull: false,
   })
-  private preco: number;
+  preco: number;
 }

@@ -10,32 +10,32 @@ import {
 import { BooksService } from 'src/services/books.service';
 import { Book } from '../models/book.model';
 
-@Controller('books ')
+@Controller('books')
 export class BooksController {
   constructor(private booksService: BooksService) {}
 
   @Get()
-  obterProdutos(): Array<Book> {
+  async obterProdutos(): Promise<Book[]> {
     return this.booksService.getAll();
   }
 
   @Get(':id')
-  pesquisaProduto(@Param() params): Book {
+  async pesquisaProduto(@Param() params): Promise<Book> {
     return this.booksService.getOne(params.id);
   }
 
   @Post()
-  criarProduto(@Body() produto): void {
+  async criarProduto(@Body() produto) {
     this.booksService.create(produto);
   }
 
   @Put()
-  atualizarProduto(@Body() produto): Book {
+  async atualizarProduto(@Body() produto): Promise<[number, Book[]]> {
     return this.booksService.update(produto);
   }
 
   @Delete(':id')
-  apagarProduto(@Param() params): void {
-    this.booksService.delete(params.id);
+  async apagarProduto(@Param() params): Promise<any> {
+    return this.booksService.delete(params.id);
   }
 }
