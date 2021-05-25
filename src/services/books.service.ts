@@ -1,5 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
+import { Op } from 'sequelize';
 import { Book } from 'src/models/book.model';
 
 @Injectable()
@@ -15,6 +16,14 @@ export class BooksService {
 
   async getOne(id: number): Promise<Book> {
     return this.bookModel.findByPk(id);
+  }
+
+  async search(word: string): Promise<Book[]> {
+    return this.bookModel.findAll({
+      where: {
+        nome: { [Op.like]: `%${word}%` },
+      },
+    });
   }
 
   async create(book: Book) {

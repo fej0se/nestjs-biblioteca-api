@@ -24,49 +24,157 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Simple library system build with nestJS.
 
 ## Installation
 
 ```bash
-$ npm install
+$ yarn install
 ```
 
 ## Running the app
 
 ```bash
 # development
-$ npm run start
+$ yarn start
 
 # watch mode
-$ npm run start:dev
+$ yarn start:dev
 
 # production mode
-$ npm run start:prod
+$ yarn start:prod
 ```
 
-## Test
 
-```bash
-# unit tests
-$ npm run test
+## Routes
 
-# e2e tests
-$ npm run test:e2e
+### GET - list all books
 
-# test coverage
-$ npm run test:cov
-```
+> URL http://localhost:3000/books
 
-## Support
+<br/>
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### GET - list book by url
 
-## Stay in touch
+> URL http://localhost:3000/books/:id
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+<br/>
+
+### GET - search by word
+
+> URL http://localhost:3000/books/search/:word
+
+Exemple: 
+> if :word = Harry
+>URL WILL BE LIKE: http://localhost:3000/books/search/Harry
+
+<br/>
+results will be all books with 'Harry' in his name.
+<br/>
+Result exemple: 
+
+```JSON
+[
+  {
+    "id": 1,
+    "codigo": "HARRY01",
+    "nome": "Harry Potter e a Pedra Filosofal",
+    "preco": 29.9,
+    "createdAt": "2021-05-25T21:50:33.038Z",
+    "updatedAt": "2021-05-25T21:58:52.941Z"
+  },
+  {
+    "id": 2,
+    "codigo": "HARRY02",
+    "nome": "Harry Potter e a Câmara Secreta",
+    "preco": 29.9,
+    "createdAt": "2021-05-25T21:51:06.361Z",
+    "updatedAt": "2021-05-25T21:51:06.361Z"
+  },
+  {
+    "id": 3,
+    "codigo": "HARRY03",
+    "nome": "Harry Potter e o prisioneiro de Azkaban",
+    "preco": 29.9,
+    "createdAt": "2021-05-25T21:51:35.124Z",
+    "updatedAt": "2021-05-25T21:51:35.124Z"
+  },
+  {
+    "id": 4,
+    "codigo": "HARRY04",
+    "nome": "Harry Potter e o Cálice de Fogo",
+    "preco": 29.9,
+    "createdAt": "2021-05-25T21:52:18.521Z",
+    "updatedAt": "2021-05-25T21:52:18.521Z"
+  },
+  {
+    "id": 5,
+    "codigo": "HARRY05",
+    "nome": "Harry Potter e a Ordem da Fênix",
+    "preco": 29.9,
+    "createdAt": "2021-05-25T21:52:26.782Z",
+    "updatedAt": "2021-05-25T21:52:26.782Z"
+  },
+  {
+    "id": 6,
+    "codigo": "HARRY06",
+    "nome": "Harry Potter e o Enigma do Príncipe",
+    "preco": 29.9,
+    "createdAt": "2021-05-25T21:52:36.152Z",
+    "updatedAt": "2021-05-25T21:52:36.152Z"
+  },
+  {
+    "id": 13,
+    "codigo": "HARRY07",
+    "nome": "Harry Potter e as Relíquias da Morte",
+    "preco": 29.9,
+    "createdAt": "2021-05-25T23:00:25.548Z",
+    "updatedAt": "2021-05-25T23:00:25.548Z"
+  }
+]
+````
+
+<br/>
+
+<br/>
+
+### POST - create book
+
+> URL http://localhost:3000/books
+
+body:
+
+```JSON
+{
+	"codigo": "HARRY07",
+	"nome": "Harry Potter e as Relíquias da Morte",
+	"preco": 29.9
+}
+````
+
+<br/>
+
+### PUT - update a book
+
+> URL http://localhost:3000/books
+
+```JSON
+{
+	"id": 1,
+	"codigo": "HARRY07",
+	"nome": "Harry Potter e as Relíquias da Morte",
+	"preco": 29.9
+}
+````
+
+<br/>
+
+### DELETE - remove a books
+
+> URL http://localhost:3000/books/:id
+
+
+<br/>
 
 ## License
 

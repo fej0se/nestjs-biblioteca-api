@@ -24,6 +24,11 @@ export class BooksController {
     return this.booksService.getOne(params.id);
   }
 
+  @Get('/search/:word')
+  async pesquisa(@Param() params): Promise<Book[]> {
+    return this.booksService.search(params.word);
+  }
+
   @Post()
   async criarProduto(@Body() produto) {
     this.booksService.create(produto);
